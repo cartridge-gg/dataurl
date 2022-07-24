@@ -115,8 +115,6 @@ func isURLCharRune(r rune) bool {
 		r != '#' &&
 		r != '"' &&
 		// unwise
-		r != '{' &&
-		r != '}' &&
 		r != '|' &&
 		r != '\\' &&
 		r != '^' &&
@@ -490,9 +488,7 @@ Loop:
 		switch r := l.next(); {
 		case r == eof:
 			break Loop
-		case isURLCharRune(r):
 		default:
-			return l.errorf("invalid data character")
 		}
 	}
 	if l.pos > l.start {
